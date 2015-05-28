@@ -13,7 +13,7 @@ var SongQueue = Songs.extend({
 
   initialize: function(){
     //debugger;
-    this.on('ended', this.removeFirst, this);
+    //this.on('add', function(){console.log('test')});
   },
 
   playFirst: function() {

@@ -9,18 +9,32 @@
 var SongQueue = Songs.extend({
 
 
-
-
-
   initialize: function(){
     this.on('dequeue', function(song){
       this.remove(song);
+    });
+
+    this.on('add', function() {
+      if(this.models.length === 1) {
+        this.playFirst();
+      }
+    });
+
+    this.on('ended', function() {
+      this.removeFirst();
+      this.playFirst();
     })
   },
 
   playFirst: function() {
     //call play on first elem inside collection
-    this.models[0].play();
+    console.log(this.models);
+    //not sure if playing right order
+    //play song immediately when it is the only song in the queue
+    if(this.models.length > 0) {
+      this.models[0].play();
+      console.log("new play");
+    }
 
 
     //check when song is done
@@ -33,7 +47,5 @@ var SongQueue = Songs.extend({
     console.log('reached');
       this.models.shift();
   }
-
-
 
 });

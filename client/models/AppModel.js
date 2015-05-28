@@ -17,16 +17,14 @@ var AppModel = Backbone.Model.extend({
       this.set('currentSong', song);
     }, this);
 
+    //ideally this would be added to SongQueue.js
     params.library.on('enqueue', function(song){
       this.get('songQueue').add(song);
-
+      //debugger
+      //don't know how below actually plays queued song...???
+      //this.set('currentSong', song);
+      //song.play();
     }, this);
-
-    //params.queue.on('end', function(){
-      //when song ends, we're going to dequeue something from the queue,
-      // and then start playing the next song
-      //this.set('songQueue', song++)
-    //})
 
   }
 

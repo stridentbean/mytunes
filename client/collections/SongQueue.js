@@ -11,9 +11,11 @@ var SongQueue = Songs.extend({
 
 
 
+
   initialize: function(){
-    //debugger;
-    //this.on('add', function(){this.trigger('add'), this});
+    this.on('dequeue', function(song){
+      this.remove(song);
+    })
   },
 
   playFirst: function() {
